@@ -2,6 +2,7 @@ package ai.sahaj.core
 
 import ai.sahaj.enums.ElementType
 import ai.sahaj.exceptions.*
+import ai.sahaj.models.GameElement
 
 class Board(val size: Int = 100) {
     private val laddersAndSnakes = mutableSetOf<GameElement>()

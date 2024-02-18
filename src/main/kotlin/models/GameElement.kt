@@ -1,4 +1,4 @@
-package ai.sahaj.core
+package ai.sahaj.models
 
 import ai.sahaj.enums.ElementType
 
