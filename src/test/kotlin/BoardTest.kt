@@ -43,4 +43,12 @@ class BoardTest {
             board.addLadder(start = 12, end = 8)
         }
     }
+
+    @Test
+    fun `should be able to add snakes to the board`() {
+        val board = Board()
+        board.addSnake(start = 24, end = 10)
+        val snakes = board.getSnakes()
+        assert(snakes.any { x -> x.first == 24 && x.second == 10 })
+    }
 }

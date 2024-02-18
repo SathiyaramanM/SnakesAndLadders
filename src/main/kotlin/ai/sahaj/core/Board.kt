@@ -5,6 +5,7 @@ import ai.sahaj.ai.sahaj.core.exceptions.LadderSameStartAndEndException
 
 class Board(val size: Int = 100) {
     private val ladders = mutableMapOf<Int, Int>()
+    private val snakes = mutableMapOf<Int, Int>()
 
     fun addLadder(start: Int, end: Int) {
         if(start == end) {
@@ -16,8 +17,15 @@ class Board(val size: Int = 100) {
         ladders[start] = end
     }
 
+    fun addSnake(start: Int, end: Int) {
+        snakes[start] = end
+    }
+
     fun getLadders(): List<Pair<Int, Int>> {
         return ladders.map { x -> Pair(x.key, x.value) }
     }
 
+    fun getSnakes(): List<Pair<Int, Int>> {
+        return snakes.map { x -> Pair(x.key, x.value) }
+    }
 }
