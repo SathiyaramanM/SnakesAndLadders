@@ -1,4 +1,5 @@
 import ai.sahaj.ai.sahaj.core.exceptions.InvalidLadderStartAndEndException
+import ai.sahaj.ai.sahaj.core.exceptions.InvalidSnakeStartAndEndException
 import ai.sahaj.ai.sahaj.core.exceptions.LadderSameStartAndEndException
 import ai.sahaj.ai.sahaj.core.exceptions.SnakeSameStartAndEndException
 import ai.sahaj.core.Board
@@ -58,6 +59,14 @@ class BoardTest {
         val board = Board()
         assertThrows<SnakeSameStartAndEndException> {
             board.addSnake(start = 12, end = 12)
+        }
+    }
+
+    @Test
+    fun `should throw an exception when snake start is lesser than snake end`() {
+        val board = Board()
+        assertThrows<InvalidSnakeStartAndEndException> {
+            board.addSnake(start = 12, end = 27)
         }
     }
 }
