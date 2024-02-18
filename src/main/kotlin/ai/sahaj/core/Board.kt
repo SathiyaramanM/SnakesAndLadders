@@ -2,6 +2,7 @@ package ai.sahaj.core
 
 import ai.sahaj.ai.sahaj.core.exceptions.InvalidLadderStartAndEndException
 import ai.sahaj.ai.sahaj.core.exceptions.LadderSameStartAndEndException
+import ai.sahaj.ai.sahaj.core.exceptions.SnakeSameStartAndEndException
 
 class Board(val size: Int = 100) {
     private val ladders = mutableMapOf<Int, Int>()
@@ -18,6 +19,9 @@ class Board(val size: Int = 100) {
     }
 
     fun addSnake(start: Int, end: Int) {
+        if(start == end) {
+            throw SnakeSameStartAndEndException()
+        }
         snakes[start] = end
     }
 

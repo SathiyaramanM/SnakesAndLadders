@@ -1,5 +1,6 @@
 import ai.sahaj.ai.sahaj.core.exceptions.InvalidLadderStartAndEndException
 import ai.sahaj.ai.sahaj.core.exceptions.LadderSameStartAndEndException
+import ai.sahaj.ai.sahaj.core.exceptions.SnakeSameStartAndEndException
 import ai.sahaj.core.Board
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -50,5 +51,13 @@ class BoardTest {
         board.addSnake(start = 24, end = 10)
         val snakes = board.getSnakes()
         assert(snakes.any { x -> x.first == 24 && x.second == 10 })
+    }
+
+    @Test
+    fun `should throw an exception when snake starts and ends at same cell`() {
+        val board = Board()
+        assertThrows<SnakeSameStartAndEndException> {
+            board.addSnake(start = 12, end = 12)
+        }
     }
 }
