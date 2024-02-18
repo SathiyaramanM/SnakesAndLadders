@@ -26,6 +26,9 @@ class Board(val size: Int = 100) {
         if(start < end) {
             throw InvalidSnakeStartAndEndException()
         }
+        if(laddersAndSnakes.any { x -> x.start == start && x.type == ElementType.SNAKE }) {
+            throw SnakeAlreadyExistsWithSameStartException()
+        }
         laddersAndSnakes.add(GameElement(start, end, ElementType.SNAKE))
     }
 
