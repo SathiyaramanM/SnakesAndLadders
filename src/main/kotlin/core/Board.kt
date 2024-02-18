@@ -1,13 +1,13 @@
 package ai.sahaj.core
 
+import ai.sahaj.enums.ElementType
 import ai.sahaj.exceptions.InvalidLadderStartAndEndException
 import ai.sahaj.exceptions.InvalidSnakeStartAndEndException
 import ai.sahaj.exceptions.LadderSameStartAndEndException
 import ai.sahaj.exceptions.SnakeSameStartAndEndException
 
 class Board(val size: Int = 100) {
-    private val ladders = mutableMapOf<Int, Int>()
-    private val snakes = mutableMapOf<Int, Int>()
+    private val laddersAndSnakes = mutableSetOf<GameElement>()
 
     fun addLadder(start: Int, end: Int) {
         if(start == end) {
@@ -16,7 +16,7 @@ class Board(val size: Int = 100) {
         if(start > end) {
             throw InvalidLadderStartAndEndException()
         }
-        ladders[start] = end
+        laddersAndSnakes.add(GameElement(start, end, ElementType.LADDER))
     }
 
     fun addSnake(start: Int, end: Int) {
@@ -26,14 +26,18 @@ class Board(val size: Int = 100) {
         if(start < end) {
             throw InvalidSnakeStartAndEndException()
         }
-        snakes[start] = end
+        laddersAndSnakes.add(GameElement(start, end, ElementType.SNAKE))
     }
 
     fun getLadders(): List<Pair<Int, Int>> {
-        return ladders.map { x -> Pair(x.key, x.value) }
+        return laddersAndSnakes
+            .filter { x -> x.type == ElementType.LADDER }
+            .map { x -> Pair(x.start, x.end) }
     }
 
     fun getSnakes(): List<Pair<Int, Int>> {
-        return snakes.map { x -> Pair(x.key, x.value) }
+        return laddersAndSnakes
+            .filter { x -> x.type == ElementType.SNAKE }
+            .map { x -> Pair(x.start, x.end) }
     }
 }
