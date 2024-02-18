@@ -1,8 +1,5 @@
-import ai.sahaj.exceptions.InvalidLadderStartAndEndException
-import ai.sahaj.exceptions.InvalidSnakeStartAndEndException
-import ai.sahaj.exceptions.LadderSameStartAndEndException
-import ai.sahaj.exceptions.SnakeSameStartAndEndException
 import ai.sahaj.core.Board
+import ai.sahaj.exceptions.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import kotlin.test.assertEquals
@@ -43,6 +40,15 @@ class BoardTest {
         val board = Board()
         assertThrows<InvalidLadderStartAndEndException> {
             board.addLadder(start = 12, end = 8)
+        }
+    }
+
+    @Test
+    fun `should throw an exception when another ladder already starts from the same start`() {
+        val board = Board()
+        board.addLadder(start = 21, end = 60)
+        assertThrows<LadderAlreadyExistsWithSameStartException> {
+            board.addLadder(start = 21, end = 41)
         }
     }
 

@@ -1,10 +1,7 @@
 package ai.sahaj.core
 
 import ai.sahaj.enums.ElementType
-import ai.sahaj.exceptions.InvalidLadderStartAndEndException
-import ai.sahaj.exceptions.InvalidSnakeStartAndEndException
-import ai.sahaj.exceptions.LadderSameStartAndEndException
-import ai.sahaj.exceptions.SnakeSameStartAndEndException
+import ai.sahaj.exceptions.*
 
 class Board(val size: Int = 100) {
     private val laddersAndSnakes = mutableSetOf<GameElement>()
@@ -15,6 +12,9 @@ class Board(val size: Int = 100) {
         }
         if(start > end) {
             throw InvalidLadderStartAndEndException()
+        }
+        if(laddersAndSnakes.any { x -> x.start == start && x.type == ElementType.LADDER }) {
+            throw LadderAlreadyExistsWithSameStartException()
         }
         laddersAndSnakes.add(GameElement(start, end, ElementType.LADDER))
     }
