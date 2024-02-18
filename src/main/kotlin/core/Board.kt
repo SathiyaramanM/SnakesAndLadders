@@ -29,6 +29,9 @@ class Board(val size: Int = 100) {
     }
 
     fun addSnake(start: Int, end: Int) {
+        if(start < 0 || end < 0 || start > size || end > size) {
+            throw SnakeOutOfRangeException()
+        }
         if(start == end) {
             throw SnakeSameStartAndEndException()
         }

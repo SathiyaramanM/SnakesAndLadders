@@ -116,4 +116,18 @@ class BoardTest {
             board.addSnake(start = 60, end = 41)
         }
     }
+
+    @Test
+    fun `should throw an exception when snake has dimensions outside of range 0 to board size`() {
+        val board = Board()
+        assertThrows<SnakeOutOfRangeException> {
+            board.addSnake(start = 101, 51)
+        }
+        assertThrows<SnakeOutOfRangeException> {
+            board.addSnake(start = 45, -1)
+        }
+        assertThrows<SnakeOutOfRangeException> {
+            board.addSnake(start = 101, -1)
+        }
+    }
 }
