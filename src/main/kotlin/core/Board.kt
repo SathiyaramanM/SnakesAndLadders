@@ -7,6 +7,9 @@ class Board(val size: Int = 100) {
     private val laddersAndSnakes = mutableSetOf<GameElement>()
 
     fun addLadder(start: Int, end: Int) {
+        if(start < 0 || end < 0 || start > size || end > size) {
+            throw LadderOutOfRangeException()
+        }
         if(start == end) {
             throw LadderSameStartAndEndException()
         }

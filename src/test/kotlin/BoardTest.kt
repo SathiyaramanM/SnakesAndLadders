@@ -28,6 +28,20 @@ class BoardTest {
     }
 
     @Test
+    fun `should throw an exception when ladder has dimensions outside of range 0 to board size`() {
+        val board = Board()
+        assertThrows<LadderOutOfRangeException> {
+            board.addLadder(start = -1, 24)
+        }
+        assertThrows<LadderOutOfRangeException> {
+            board.addLadder(start = 4, 101)
+        }
+        assertThrows<LadderOutOfRangeException> {
+            board.addLadder(start = -1, 101)
+        }
+    }
+
+    @Test
     fun `should throw an exception when ladder has same start and end cell`() {
         val board = Board()
         assertThrows<LadderSameStartAndEndException> {
