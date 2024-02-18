@@ -1,3 +1,4 @@
+import ai.sahaj.ai.sahaj.core.exceptions.InvalidLadderStartAndEndException
 import ai.sahaj.ai.sahaj.core.exceptions.LadderSameStartAndEndException
 import ai.sahaj.core.Board
 import org.junit.jupiter.api.Test
@@ -32,6 +33,14 @@ class BoardTest {
         val board = Board()
         assertThrows<LadderSameStartAndEndException> {
             board.addLadder(start = 12, end = 12)
+        }
+    }
+
+    @Test
+    fun `should throw an exception when ladder start is greater than ladder end`() {
+        val board = Board()
+        assertThrows<InvalidLadderStartAndEndException> {
+            board.addLadder(start = 12, end = 8)
         }
     }
 }

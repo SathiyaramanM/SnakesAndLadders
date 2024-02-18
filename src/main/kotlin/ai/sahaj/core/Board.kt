@@ -1,5 +1,6 @@
 package ai.sahaj.core
 
+import ai.sahaj.ai.sahaj.core.exceptions.InvalidLadderStartAndEndException
 import ai.sahaj.ai.sahaj.core.exceptions.LadderSameStartAndEndException
 
 class Board(val size: Int = 100) {
@@ -8,6 +9,9 @@ class Board(val size: Int = 100) {
     fun addLadder(start: Int, end: Int) {
         if(start == end) {
             throw LadderSameStartAndEndException()
+        }
+        if(start > end) {
+            throw InvalidLadderStartAndEndException()
         }
         ladders[start] = end
     }
