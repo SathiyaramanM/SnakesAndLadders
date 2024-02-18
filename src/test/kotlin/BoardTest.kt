@@ -1,7 +1,7 @@
-import ai.sahaj.ai.sahaj.core.exceptions.InvalidLadderStartAndEndException
-import ai.sahaj.ai.sahaj.core.exceptions.InvalidSnakeStartAndEndException
-import ai.sahaj.ai.sahaj.core.exceptions.LadderSameStartAndEndException
-import ai.sahaj.ai.sahaj.core.exceptions.SnakeSameStartAndEndException
+import ai.sahaj.exceptions.InvalidLadderStartAndEndException
+import ai.sahaj.exceptions.InvalidSnakeStartAndEndException
+import ai.sahaj.exceptions.LadderSameStartAndEndException
+import ai.sahaj.exceptions.SnakeSameStartAndEndException
 import ai.sahaj.core.Board
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows

@@ -1,9 +1,9 @@
 package ai.sahaj.core
 
-import ai.sahaj.ai.sahaj.core.exceptions.InvalidLadderStartAndEndException
-import ai.sahaj.ai.sahaj.core.exceptions.InvalidSnakeStartAndEndException
-import ai.sahaj.ai.sahaj.core.exceptions.LadderSameStartAndEndException
-import ai.sahaj.ai.sahaj.core.exceptions.SnakeSameStartAndEndException
+import ai.sahaj.exceptions.InvalidLadderStartAndEndException
+import ai.sahaj.exceptions.InvalidSnakeStartAndEndException
+import ai.sahaj.exceptions.LadderSameStartAndEndException
+import ai.sahaj.exceptions.SnakeSameStartAndEndException
 
 class Board(val size: Int = 100) {
     private val ladders = mutableMapOf<Int, Int>()

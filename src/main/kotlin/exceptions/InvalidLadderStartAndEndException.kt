@@ -1,4 +1,4 @@
-package ai.sahaj.ai.sahaj.core.exceptions
+package ai.sahaj.exceptions
 
 class InvalidLadderStartAndEndException : Exception("Ladder start should be lesser than Ladder end") {
 

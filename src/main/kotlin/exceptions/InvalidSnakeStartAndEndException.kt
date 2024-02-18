@@ -1,4 +1,4 @@
-package ai.sahaj.ai.sahaj.core.exceptions
+package ai.sahaj.exceptions
 
 class InvalidSnakeStartAndEndException : Exception("Snake start should be greater than Snake end") {
 
