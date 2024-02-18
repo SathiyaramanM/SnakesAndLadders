@@ -6,6 +6,9 @@ class Board(val size: Int = 100) {
     private val ladders = mutableMapOf<Int, Int>()
 
     fun addLadder(start: Int, end: Int) {
+        if(start == end) {
+            throw LadderSameStartAndEndException()
+        }
         ladders[start] = end
     }
 

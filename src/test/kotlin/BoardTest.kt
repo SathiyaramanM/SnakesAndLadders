@@ -1,5 +1,7 @@
+import ai.sahaj.ai.sahaj.core.exceptions.LadderSameStartAndEndException
 import ai.sahaj.core.Board
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 import kotlin.test.assertEquals
 
 class BoardTest {
@@ -23,5 +25,13 @@ class BoardTest {
         board.addLadder(start = 12, end = 27)
         val ladders = board.getLadders()
         assert(ladders.any { x -> x.first == 12 && x.second == 27 })
+    }
+
+    @Test
+    fun `should throw an exception when ladder has same start and end cell`() {
+        val board = Board()
+        assertThrows<LadderSameStartAndEndException> {
+            board.addLadder(start = 12, end = 12)
+        }
     }
 }
