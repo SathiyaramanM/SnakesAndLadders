@@ -13,8 +13,14 @@ class Board(val size: Int = 100) {
         if(start > end) {
             throw InvalidLadderStartAndEndException()
         }
-        if(laddersAndSnakes.any { x -> x.start == start && x.type == ElementType.LADDER }) {
-            throw LadderAlreadyExistsWithSameStartException()
+        val existingGameElement = laddersAndSnakes.firstOrNull { x -> x.start == start}
+        if(existingGameElement != null) {
+            if (existingGameElement.type == ElementType.LADDER) {
+                throw LadderAlreadyExistsWithSameStartException()
+            }
+            if (existingGameElement.type == ElementType.SNAKE) {
+                throw SnakeAlreadyExistsWithSameStartException()
+            }
         }
         laddersAndSnakes.add(GameElement(start, end, ElementType.LADDER))
     }

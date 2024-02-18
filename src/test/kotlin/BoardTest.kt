@@ -53,6 +53,15 @@ class BoardTest {
     }
 
     @Test
+    fun `should throw an exception when a snake already starts from the same start`() {
+        val board = Board()
+        board.addSnake(start = 21, end = 9)
+        assertThrows<SnakeAlreadyExistsWithSameStartException> {
+            board.addLadder(start = 21, end = 41)
+        }
+    }
+
+    @Test
     fun `should be able to add snakes to the board`() {
         val board = Board()
         board.addSnake(start = 24, end = 10)
